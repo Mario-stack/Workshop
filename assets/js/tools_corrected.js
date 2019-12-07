@@ -20,8 +20,8 @@
     // - - - - - - - - - -
     /** function _getType()
      * 
-     * @param  {*}      t  _typeOfVariable 
-     * @return {string} 
+     * @param   {*}      t  _typeOfVariable 
+     * @returns {string|boolean} 
      */
     function _getType(t) {
         let _typeOfVariable = t || undefined;
@@ -33,14 +33,15 @@
             return Array.isArray(_typeOfVariable) ? 'array' : typeof (_typeOfVariable);
         } catch (_error) {
             console.log('ERROR: function _getType' + _error);
+            return false;
         }
     }
 
     /** function _log
      * 
-     * @param  {string} n  _nameOfVariable
-     * @param  {*}      t  _typeOfVariable 
-     * @return void
+     * @param   {string} n  _nameOfVariable
+     * @param   {*}      t  _typeOfVariable 
+     * @returns void
      */
     function _log(n, t) {
         let
@@ -60,7 +61,7 @@
 
     /**
      * Calls the main procedure of scopes and types
-     * @return void
+     * @returns void
      */
     function _main() {
         try {
