@@ -18,7 +18,7 @@
 
 
     // function
-    
+
     /** function _getType()
      * 
      * @param {*} _typeOfVariable 
@@ -47,6 +47,35 @@
         }
     }
 
+    /** function _addNavigation
+     * 
+     * @param {object} _navigationData  
+     * @return void
+     */
+    function _addNavigation(_navigationData = []) {
+        let logInfo = "";
+        try {
+            if (_navigationData === null)
+                return;
+            logInfo = ' - Parameter 1: navigationData ' + '{' + _getType(_navigationData) + '}: ' + _navigationData.text;
+
+            let nav = document.createElement('nav');
+            let ul = nav.appendChild(document.createElement('ul'));
+
+            for (let i = 0; i < _navigationData.length; i++) {
+                let li = ul.appendChild(document.createElement('li'));
+                let a = li.appendChild(document.createElement('a'));
+                let text = document.createTextNode(_navigationData[i].text);
+                a.setAttribute('href', _navigationData[i].link);
+                a.appendChild(text);
+            }
+            document.body.appendChild(nav); // Erst, wenn die Liste erzeugt ist wird sie verfügbar gemacht <- besserer Weg
+
+        } catch (_error) {
+            console.log('ERROR: function _addNavigation: ' + _error + logInfo);
+        }
+    }
+
 
     /**
      * Calls the main procedure of scopes and types
@@ -56,12 +85,13 @@
         try {
             window.tools = {} || window.tools;
             window.tools.log = _log;
+            window.tools.addNavigation = _addNavigation;
         } catch (_error) {
             console.log('ERROR: function _main' + _error);
         }
     }
 
-    
+
     // - - - - - - - - - -
     // Control
     // - - - - - - - - - -
