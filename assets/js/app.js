@@ -18,19 +18,19 @@
 
     let navigationData = [{
             text: "Home",
-            link: 'index.html'
+            link: 'assets/content/home.html'
         },
         {
             text: "Work",
-            link: 'work.html'
+            link: 'assets/content/work.html'
         },
         {
             text: "Contact",
-            link: 'contact.html'
+            link: 'assets/content/contact.html'
         },
         {
             text: "Imprint",
-            link: 'imprint.html'
+            link: 'assets/content/imprint.html'
         }
     ]
 
@@ -43,10 +43,11 @@
      * @return void
      */
     function _main() {
-        tools.addNavigation(navigationData);  
-   //     tools.addNavigation([,]);  
-   //     tools.addNavigation(null);
-   //     tools.addNavigation();
+        try {
+            tools.addNavigation(navigationData);
+        } catch (_error) {
+            console.log('ERROR: function app::_main: ' + _error);
+        }
     }
 
     // - - - - - - - - - -
